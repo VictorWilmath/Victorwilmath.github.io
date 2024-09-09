@@ -4,31 +4,294 @@
     <link rel="icon" href="pipsheader.jpg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Victor Wilmath - Projects</title>
+    <title>Projects - Victor Wilmath</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Same styles as index.html */
+        * {
+            transition: all 0.3s ease;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            background-image: linear-gradient(to bottom, #1a1a1a, #2c2c2c);
+            background-attachment: fixed;
+            color: #f0f0f0;
+            overflow-x: hidden;
+        }
+        header {
+            background-color: #2c2c2c;
+            padding: 20px;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #B2E0AA;
+        }
+        nav {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: #f0f0f0;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #B2E0AA;
+        }
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h2 {
+            color: #B2E0AA;
+            position: relative;
+            display: inline-block;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #B2E0AA;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        h2:hover::after {
+            transform: scaleX(1);
+        }
+        a {
+            color: #B2E0AA;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .project {
+            background-color: #2c2c2c;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .content-box {
+            background-color: rgba(44, 44, 44, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #B2E0AA;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9ed099;
+        }
+        #canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;  // Change this to -1
+        }
+        header, nav, main {
+            position: relative;
+            z-index: 1;  // Ensure these are above the canvas
+        }
     </style>
 </head>
 <body>
+    <canvas id="canvas"></canvas>
     <header>
-        <h1>Victor Wilmath</h1>
-        <p>Email: Victorwilmath5728@gmail.com | Phone: (717)602-1924 | Linkedin: <a href="https://www.linkedin.com/in/victorwilmath/">VictorWilmath</a></p>
+        <h1>My Projects</h1>
     </header>
 
     <nav>
         <a href="index.html">Home</a>
         <a href="projects.html">Projects</a>
         <a href="about.html">About</a>
+        <a href="gallery.html">Gallery</a>
     </nav>
 
     <main>
-        <h2>Personal Projects</h2>
-        <ul>
-            <li>Cat Identifying Neural Network</li>
-            <p> I created a neural network capable of identifying photos of my cats by name with reasonable accuracy. See it here on my <a href="https://github.com/VictorWilmath/Whiskard">Github!</a></p>
-            <li>Backyard radio telescope using GNU Radio 2</li>
-            <p> [wip]</p>
-        </ul>
+        <div class="content-box">
+            <h2>Project 1: Personal Website</h2>
+            <p>This website you're currently viewing is one of my projects. I built it using HTML, CSS, and JavaScript to showcase my skills and share information about myself.</p>
+        </div>
+        <div class="content-box">
+            <h2>Project 2: Backyard Radio Telescope</h2>
+            <p>Using a Software Defined Radio, supplies from home depot, and a cheap Nooelec satellite dish, I created a radio telescope for receiving data from astronomical bodies and various weather satellites.</p>
+        </div>
+        <div class="content-box">
+            <h2>Project 3: Whiskard</h2>
+            <p>Whiskard is a project I developed that demonstrates my skills in software development and potentially robotics or automation. It showcases my ability to create practical applications that solve real-world problems or enhance existing processes. For more details about Whiskard, you can check out the <a href="https://github.com/VictorWilmath/Whiskard" target="_blank">GitHub repository</a>.</p>
+        </div>
     </main>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    
+        let particlesArray;
+    
+        // get mouse position
+        let mouse = {
+            x: null,
+            y: null,
+            radius: (canvas.height/160) * (canvas.width/160)
+        }
+    
+        window.addEventListener('mousemove',
+            function(event) {
+                mouse.x = event.x;
+                mouse.y = event.y;
+            }
+        );
+    
+        // create particle
+        class Particle {
+            constructor(x, y, directionX, directionY, size, color) {
+                this.x = x;
+                this.y = y;
+                this.directionX = directionX;
+                this.directionY = directionY;
+                this.size = size;
+                this.color = color;
+            }
+            // method to draw individual particle
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                ctx.fillStyle = 'white';
+                ctx.fill();
+            }
+            // check particle position, check mouse position, move the particle, draw the particle
+            update() {
+                //check if particle is still within canvas
+                if (this.x > canvas.width || this.x < 0 ) {
+                    this.directionX = -this.directionX;
+                }
+                if (this.y > canvas.height || this.y < 0) {
+                    this.directionY = -this.directionY;
+                }
+    
+                //check collision detection - mouse position / particle position
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx*dx + dy*dy);
+                if (distance < mouse.radius + this.size){
+                    if (mouse.x < this.x && this.x < canvas.width - this.size * 10) {
+                        this.x += 5;
+                    }
+                    if (mouse.x > this.x && this.x > this.size * 10) {
+                        this.x -= 5;
+                    }
+                    if (mouse.y < this.y && this.y < canvas.height - this.size * 10) {
+                        this.y += 5;
+                    }
+                    if (mouse.y > this.y && this.y > this.size * 10) {
+                        this.y -= 5;
+                    }
+                }
+                // move particle
+                this.x += this.directionX;
+                this.y += this.directionY;
+                // draw particle
+                this.draw();
+            }
+        }
+    
+        // create particle array
+        function init() {
+            particlesArray = [];
+            let numberOfParticles = (canvas.height * canvas.width) / 9000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                let size = (Math.random() * 5) + 1;
+                let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+                let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+                let directionX = (Math.random() * 2) - 1;
+                let directionY = (Math.random() * 2) - 1;
+                let color = 'white';
+    
+                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+            }
+        }
+    
+        // check if particles are close enough to draw line between them
+        function connect(){
+            let opacityValue = 1;
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let distance = (( particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
+                    + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                    if (distance < (canvas.width/7) * (canvas.height/7)) {
+                        opacityValue = 1 - (distance/20000);
+                        ctx.strokeStyle = 'rgba(178, 224, 170,' + opacityValue + ')';
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+    
+        // animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0,0,innerWidth, innerHeight);
+    
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+            }
+            connect();
+        }
+    
+        // resize event
+        window.addEventListener('resize',
+            function(){
+                canvas.width = innerWidth;
+                canvas.height = innerHeight;
+                mouse.radius = ((canvas.height/160) * (canvas.height/160));
+                init();
+            }
+        );
+    
+        // mouse out event
+        window.addEventListener('mouseout',
+            function(){
+                mouse.x = undefined;
+                mouse.y = undefined;
+            }
+        )
+    
+        init();
+        animate();
+    </script>
 </body>
 </html>
