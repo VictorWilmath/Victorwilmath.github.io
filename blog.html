@@ -4,7 +4,7 @@
     <link rel="icon" href="pipsheader.jpg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Victor Wilmath</title>
+    <title>About - Victor Wilmath</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -28,8 +28,6 @@
             background-color: #2c2c2c;
             padding: 20px;
             text-align: center;
-            position: relative;
-            z-index: 1;
         }
         h1, h2, h3 {
             font-family: 'Montserrat', sans-serif;
@@ -43,8 +41,6 @@
             background-color: #333;
             padding: 10px;
             text-align: center;
-            position: relative;
-            z-index: 1;
         }
         nav a {
             color: #f0f0f0;
@@ -60,13 +56,12 @@
             padding: 20px;
             max-width: 800px;
             margin: 0 auto;
-            position: relative;
-            z-index: 1;
         }
         h2 {
             color: #B2E0AA;
             position: relative;
             display: inline-block;
+            margin-top: 0;
         }
         h2::after {
             content: '';
@@ -89,15 +84,6 @@
         a:hover {
             text-decoration: underline;
         }
-        #canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -111,6 +97,19 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #9ed099;
         }
+        #canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        header, nav, main {
+            position: relative;
+            z-index: 1;
+        }
         .content-box {
             background-color: rgba(44, 44, 44, 0.8);
             border-radius: 10px;
@@ -118,65 +117,12 @@
             margin-bottom: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .image-container {
-            text-align: center;
-            margin: 20px 0;
-        }
-        .responsive-image {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .image-caption {
-            text-align: center;
-            margin-top: 10px;
-            font-style: italic;
-        }
-        .blog-post {
-            background-color: rgba(44, 44, 44, 0.8);
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .blog-post h3 {
-            color: #B2E0AA;
-            margin-top: 0;
-            font-size: 1.8em;
-        }
-        .post-meta {
-            color: #888;
-            font-size: 0.9em;
-            margin-bottom: 15px;
-        }
-        .post-tags {
-            margin-top: 15px;
-        }
-        .tag {
-            background-color: rgba(178, 224, 170, 0.2);
-            color: #B2E0AA;
-            padding: 4px 10px;
-            border-radius: 15px;
-            font-size: 0.8em;
-            margin-right: 8px;
-            display: inline-block;
-        }
-        .read-more {
-            display: inline-block;
-            margin-top: 15px;
-            color: #B2E0AA;
-            font-weight: bold;
-        }
-        .read-more:hover {
-            color: #9ed099;
-        }
     </style>
 </head>
 <body>
     <canvas id="canvas"></canvas>
     <header>
-        <h1>Blog</h1>
+        <h1>About Victor Wilmath</h1>
     </header>
 
     <nav>
@@ -188,20 +134,35 @@
     </nav>
 
     <main>
-        <div class="blog-post">
-            <h3>End of the Internship Search</h3>
-            <div class="post-meta">Posted on November 28, 2024 | By Victor Wilmath</div>
-            <p>
-                After over a year of applying and being rejected, I have finally received an internship offer. 
-                This one in particular comes from Letterkenny Army Depot. I think I'd like to use this post to 
-                reflect on my search, and pin down what I think exactly got me the offer...
-            </p>
-            <div class="post-tags">
-                <span class="tag">Internships</span>
-                <span class="tag">College Life</span>
-                <span class="tag">Controls Engineering</span>
-            </div>
-            <a href="blogposts/post1.html" class="read-more">Read More →</a>
+        <div class="content-box">
+            <h2>About Me</h2>
+            <p>I am a second year electrical engineering student at Penn State Harrisburg. I am very passionate about EE, and have a few of my specific interests listed below. This is not at all exhaustive, I am always looking to learn about new specialties and fields!</p>
+        </div>
+        
+        <div class="content-box">
+            <h2>Interests</h2>
+            <ul>
+                <li>Electrical Engineering</li>
+                <li>Programming</li>
+                <li>Signal Processing</li>
+                <li>Radar and Sonar</li>
+            </ul>
+        </div>
+        
+        <div class="content-box">
+            <h2>Skills</h2>
+            <ul>
+                <li>HTML, CSS, JavaScript</li>
+                <li>Python</li>
+                <li>Arduino</li>
+                <li>Circuit Design</li>
+            </ul>
+        </div>
+        
+        <div class="content-box">
+            <h2>Education</h2>
+            <p>Bachelor of Science in Electrical Engineering (Expected graduation: 2027)<br>
+            Penn State Harrisburg</p>
         </div>
     </main>
 
