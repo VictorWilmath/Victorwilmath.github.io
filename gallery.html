@@ -137,7 +137,8 @@
         .gallery-item:hover {
             transform: scale(1.05);
         }
-        .gallery-item img {
+        .gallery-item img,
+        .gallery-item video {
         width: 100%;
         height: 100%;
         object-fit: cover; 
@@ -172,7 +173,8 @@
             justify-content: center;
             align-items: center;
         }
-        .lightbox img {
+        .lightbox img,
+        .lightbox video {
             max-width: 90%;
             max-height: 90%;
             border-radius: 5px;
@@ -199,27 +201,22 @@
         <a href="projects.html">Projects</a>
         <a href="about.html">About</a>
         <a href="gallery.html">Gallery</a>
-        <a href="blog.html">Blog</a>
     </nav>
 
     <main>
         <div class="content-box">
             <h2>Welcome to my Gallery</h2>
-            <p>Here you can find a collection of images related to my projects and this website. Click on an image to view it in full size.</p>
+            <p>Here you'll find a collection of photos and videos related to my projects. Click any item to view it in full size.</p>
         </div>
         <div class="content-box">
             <div class="gallery">
                 <div class="gallery-item">
-                    <img src="oldwebsite.png" alt="old website" onclick="openLightbox(this.src, 'Image of this website before my overhaul')">
-                    <div class="caption">Image of this website before my overhaul</div>
+                    <img src="Assets/Telescope.jpeg" alt="PSU radio telescope" onclick="openLightbox(this.src, 'Photo of the PSU radio telescope')">
+                    <div class="caption">Photo of the PSU radio telescope</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="me.JPG" alt="me" onclick="openLightbox(this.src, 'Photo of me and my cat, Pips')">
-                    <div class="caption">Photo of me and my cat, Pips</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="radiotelescope.jpg" alt="Backyard Radio Telescope" onclick="openLightbox(this.src, 'My backyard radio telescope')">
-                    <div class="caption">My backyard radio telescope</div>
+                    <video src="Assets/3DRendering.mov" muted playsinline onclick="openLightbox(this.currentSrc || this.src, 'A video of my microcontroller 3D rendering', 'video')"></video>
+                    <div class="caption">A video of my microcontroller 3D rendering</div>
                 </div>
             </div>
         </div>
@@ -228,6 +225,10 @@
     <div class="lightbox" id="lightbox" onclick="closeLightbox()">
         <span class="lightbox-close">&times;</span>
         <img id="lightbox-img" src="" alt="Full size image">
+        <video id="lightbox-video" controls style="display: none;">
+            <source id="lightbox-video-source" src="" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
 
     <script>
@@ -360,16 +361,37 @@
         init();
         animate();
 
-        function openLightbox(src, caption) {
+        function openLightbox(src, caption, mediaType = 'image') {
             const lightbox = document.getElementById('lightbox');
             const img = document.getElementById('lightbox-img');
-            img.src = src;
-            img.alt = caption;
+            const video = document.getElementById('lightbox-video');
+            const videoSource = document.getElementById('lightbox-video-source');
+
+            if (mediaType === 'video') {
+                img.style.display = 'none';
+                video.style.display = 'block';
+                videoSource.src = src;
+                video.load();
+            } else {
+                video.pause();
+                video.style.display = 'none';
+                videoSource.src = '';
+                img.style.display = 'block';
+                img.src = src;
+                img.alt = caption;
+            }
+
             lightbox.style.display = 'flex';
         }
 
         function closeLightbox() {
             const lightbox = document.getElementById('lightbox');
+            const video = document.getElementById('lightbox-video');
+            const videoSource = document.getElementById('lightbox-video-source');
+
+            video.pause();
+            video.currentTime = 0;
+            videoSource.src = '';
             lightbox.style.display = 'none';
         }
 
@@ -380,6 +402,10 @@
         });
 
         document.getElementById('lightbox-img').addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
+
+        document.getElementById('lightbox-video').addEventListener('click', function(event) {
             event.stopPropagation();
         });
     </script>
