@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="pipsheader.jpg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completed Courses - Victor Wilmath</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Assets/site-quotes.css">
+    <style>
+        * { transition: all 0.3s ease; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            background-image: linear-gradient(to bottom, #1a1a1a, #2c2c2c);
+            background-attachment: fixed;
+            color: #f0f0f0;
+            overflow-x: hidden;
+            position: relative;
+        }
+        header {
+            background-color: #2c2c2c;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        h1, h2 { font-family: 'Montserrat', sans-serif; }
+        h1 { margin: 0; font-size: 2.5em; color: #B2E0AA; }
+        nav {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        nav a {
+            color: #f0f0f0;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+        }
+        nav a:hover { color: #B2E0AA; }
+        main {
+            width: min(800px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: 20px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .course-section {
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(44, 44, 44, .8);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
+        }
+        .course-section h2 { margin: 0 0 12px; color: #B2E0AA; }
+        .course-list { margin: 0; padding: 0; list-style: none; }
+        .course-list li { padding: 9px 0; border-top: 1px solid rgba(240, 240, 240, .12); }
+        .course-list li:first-child { border-top: 0; }
+        #canvas {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        @media (max-width: 520px) {
+            nav a { margin: 0 7px; font-size: .95em; }
+            h1 { font-size: 2.1em; }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <header><h1>Completed Courses</h1></header>
+    <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="writings.html">Writings</a>
+    </nav>
+    <main>
+        <!-- Add one list item for each completed course. -->
+
+        <section class="course-section" aria-labelledby="ee-heading">
+            <h2 id="ee-heading">Electrical Engineering</h2>
+            <ul class="course-list">
+                <!-- <li>Course number — Course title</li> -->
+                 <li>EE-311 - Electronic Circuit Design II</li>
+                 <li>EE-341 - Semiconductor Device Principles</li>
+                 <li>EE-310 - Electronic Circuit Design I</li>
+                 <li>EE-210 - Circuits & Devices</li>
+            </ul>
+        </section>
+
+                <section class="course-section" aria-labelledby="physics-heading">
+            <h2 id="physics-heading">Physics</h2>
+            <ul class="course-list">
+                <!-- <li>Course number — Course title</li> -->
+                 <li>PHYS-214 - Wave Motion & Quantum Physics</li>
+                 <li>PHYS-213 - Fluids & Thermal Physics</li>
+                 <li>PHYS-212 - Electricity & Magnetism</li>
+                 <li>PHYS-211 - Mechanics</li>
+            </ul>
+        </section>
+
+                <section class="course-section" aria-labelledby="math-heading">
+            <h2 id="math-heading">Mathematics</h2>
+            <ul class="course-list">
+                <!-- <li>Course number — Course title</li> -->
+                 <li>MATH-250 - Ordinary Differential Equations</li>
+                 <li>MATH-230 - Calculus & Vector Analysis</li>
+                 <li>MATH-220 - Matrices</li>
+                 <li>MATH-141 - Calculus & Analytic Geometry II</li>
+                 <li>MATH-140 - Calculus & Analytic Geometry I</li>
+            </ul>
+        </section>
+
+        <section class="course-section" aria-labelledby="cmpeh-heading">
+            <h2 id="cmpeh-heading">Computer Engineering</h2>
+            <ul class="course-list">
+                <!-- <li>Course number — Course title</li> -->
+                 <li>CMPEH-472 - Microprocessors</li>
+                 <li>CMPEH-271 - Intro to Digital Systems</li>
+                 <li>CMPEH-275 - Digital Design Lab</li>
+            </ul>
+        </section>
+        <section class="course-section" aria-labelledby="other-heading">
+            <h2 id="other-heading">Other courses</h2>
+            <ul class="course-list">
+                <!-- <li>Course number — Course title</li> -->
+                 <li>ENGL-202C - Technical Writing</li>
+                 <li>CAS 100A - Effective Speech</li>
+                 <li>ART-20 - Introduction to Drawing</li>
+                 <li>STAT-200 - Elementary Statistics</li>
+                 <li>EMCH-211 - Statics</li>
+                 <li>ECON 104 - Macroeconomic Analysis</li>
+                 <li>KINES-45 - NAUI Basic SCUBA</li>
+                 <li>CHEM-110 - Chemical Principles I</li>
+                 <li>CHEM-111 - Experimental Chemistry I</li>
+                 <li>ENGL-15 - Rhetoric & Composition</li>
+                 <li>EDSGN-100s - Introduction to Engineering Design</li>
+                 <li>COMM-234N - Digital Cultures</li>
+            </ul>
+        </section>
+    </main>
+    <script src="Assets/particle-background.js"></script>
+    <script src="Assets/site-quotes.js"></script>
+</body>
+</html>

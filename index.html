@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Victor Wilmath</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Assets/site-quotes.css">
     <style>
         * {
             transition: all 0.3s ease;
@@ -133,161 +134,84 @@
             margin-top: 10px;
             font-style: italic;
         }
+        .home-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .overview-box { width: 100%; }
+        .home-grid .content-box { margin-bottom: 0; }
+        .home-grid h2 { margin-top: 0; }
+        .home-projects {
+            margin: 0 0 18px;
+            padding: 0;
+            list-style: none;
+        }
+        .home-projects li {
+            padding: 0 0 16px;
+            border-bottom: 1px solid rgba(240, 240, 240, .1);
+        }
+        .home-projects li + li { padding-top: 16px; }
+        .home-projects a {
+            display: block;
+            color: #f0f0f0;
+            font-size: 1.05em;
+        }
+        .home-projects a:hover { color: #B2E0AA; }
+        .home-projects p {
+            margin: 7px 0 0;
+            padding: 8px 12px;
+            border-left: 2px solid rgba(178, 224, 170, .48);
+            background: rgba(24, 29, 26, .72);
+            color: #d1d8d1;
+            line-height: 1.45;
+        }
+        .box-link { display: inline-block; margin-top: 2px; }
     </style>
 </head>
 <body>
     <canvas id="canvas"></canvas>
     <header>
         <h1>Victor Wilmath</h1>
-        <p>Victorwilmath5728@gmail.com | (717)602-1924 | <a href="https://www.linkedin.com/in/victorwilmath/">LinkedIn</a> | <a href="https://github.com/VictorWilmath">GitHub</a></p>
+        <p>vww5054@psu.edu | (717) 602-1924 | <a href="https://www.linkedin.com/in/victorwilmath/">LinkedIn</a> | <a href="https://github.com/VictorWilmath">GitHub</a> | <a href="https://www.youtube.com/@catstatue">Youtube</a></p>
     </header>
 
     <nav>
         <a href="index.html">Home</a>
         <a href="projects.html">Projects</a>
         <a href="about.html">About</a>
-        <a href="gallery.html">Gallery</a>
+        <a href="writings.html">Writings</a>
     </nav>
 
     <main>
-        <div class="content-box">
-            <h2>Welcome</h2>
-            <p>Hello and welcome to my website! My name is Victor Wilmath, and I am a fourth-year electrical engineering student. I made this website as a place to document my personal projects and showcase my work. More information can be found in the "About" section. You can download my resume <a href="Assets/Resume.pdf">here</a>.</p>
+        <div class="home-grid">
+            <section class="content-box overview-box" aria-labelledby="overview-heading">
+                <h2 id="overview-heading">Overview</h2>
+                <p>Hello, I am an Electrical engineering student at Penn State Harrisburg. I like digital signal processing and computer vision. This website acts as a space to document projects I have worked on, as well as collect my writings.</p>
+                <a class="box-link" href="Assets/Resume.pdf">Download my resume here</a>
+            </section>
+            <section class="content-box" aria-labelledby="projects-heading">
+                <h2 id="projects-heading">Projects overview</h2>
+                <ul class="home-projects">
+                    <li>
+                        <a href="https://github.com/VictorWilmath/Synesis">Synesis</a>
+                        <p>A software solution to SteamVR full-body-tracking using computer vision.</p>
+                    </li>
+                    <li>
+                        <a href="projects.html">Microcontroller Graphics Rendering</a>
+                        <p>Framework for rendering 3D graphics on a Raspberry Pi Pico W, and pushing the output to a TFT display over SPI.</p>
+                    </li>
+                    <li>
+                        <a href="https://github.com/VictorWilmath/yourWebsite">YourWebsite</a>
+                        <p>A framework I created as a workshop for the IEEE @ PSU Harrisburg. Participants learned how to build and deploy a static HTML site using github pages.</p>
+                    </li>
+                </ul>
+                <a class="box-link" href="projects.html">Browse all projects</a>
+            </section>
         </div>
     </main>
 
-    <script>
-        const canvas = document.getElementById('canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    
-        let particlesArray;
-    
-        // mouse position
-        let mouse = {
-            x: null,
-            y: null,
-            radius: (canvas.height/160) * (canvas.width/160)
-        }
-    
-        window.addEventListener('mousemove',
-            function(event) {
-                mouse.x = event.x;
-                mouse.y = event.y;
-            }
-        );
-    
-        // particles
-        class Particle {
-            constructor(x, y, directionX, directionY, size, color) {
-                this.x = x;
-                this.y = y;
-                this.directionX = directionX;
-                this.directionY = directionY;
-                this.size = size;
-                this.color = color;
-            }
-            // drawing particles
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-                ctx.fillStyle = 'white';
-                ctx.fill();
-            }
-            update() {
-                if (this.x > canvas.width || this.x < 0 ) {
-                    this.directionX = -this.directionX;
-                }
-                if (this.y > canvas.height || this.y < 0) {
-                    this.directionY = -this.directionY;
-                }
-    
-                let dx = mouse.x - this.x;
-                let dy = mouse.y - this.y;
-                let distance = Math.sqrt(dx*dx + dy*dy);
-                if (distance < mouse.radius + this.size){
-                    if (mouse.x < this.x && this.x < canvas.width - this.size * 10) {
-                        this.x += 5;
-                    }
-                    if (mouse.x > this.x && this.x > this.size * 10) {
-                        this.x -= 5;
-                    }
-                    if (mouse.y < this.y && this.y < canvas.height - this.size * 10) {
-                        this.y += 5;
-                    }
-                    if (mouse.y > this.y && this.y > this.size * 10) {
-                        this.y -= 5;
-                    }
-                }
-                this.x += this.directionX;
-                this.y += this.directionY;
-                this.draw();
-            }
-        }
-    
-        function init() {
-            particlesArray = [];
-            let numberOfParticles = (canvas.height * canvas.width) / 9000;
-            for (let i = 0; i < numberOfParticles; i++) {
-                let size = (Math.random() * 5) + 1;
-                let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
-                let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
-                let directionX = (Math.random() * 2) - 1;
-                let directionY = (Math.random() * 2) - 1;
-                let color = 'white';
-    
-                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
-            }
-        }
-    
-        function connect(){
-            let opacityValue = 1;
-            for (let a = 0; a < particlesArray.length; a++) {
-                for (let b = a; b < particlesArray.length; b++) {
-                    let distance = (( particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
-                    + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
-                    if (distance < (canvas.width/7) * (canvas.height/7)) {
-                        opacityValue = 1 - (distance/20000);
-                        ctx.strokeStyle = 'rgba(178, 224, 170,' + opacityValue + ')';
-                        ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-        }
-    
-        function animate() {
-            requestAnimationFrame(animate);
-            ctx.clearRect(0,0,innerWidth, innerHeight);
-    
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-            }
-            connect();
-        }
-    
-        window.addEventListener('resize',
-            function(){
-                canvas.width = innerWidth;
-                canvas.height = innerHeight;
-                mouse.radius = ((canvas.height/160) * (canvas.height/160));
-                init();
-            }
-        );
-    
-        window.addEventListener('mouseout',
-            function(){
-                mouse.x = undefined;
-                mouse.y = undefined;
-            }
-        )
-    
-        init();
-        animate();
-    </script>
+    <script src="Assets/particle-background.js"></script>
+    <script src="Assets/site-quotes.js"></script>
 </body>
 </html>

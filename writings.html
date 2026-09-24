@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="pipsheader.jpg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writings - Victor Wilmath</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Assets/site-quotes.css">
+    <style>
+        * { transition: all 0.3s ease; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            background-image: linear-gradient(to bottom, #1a1a1a, #2c2c2c);
+            background-attachment: fixed;
+            color: #f0f0f0;
+            overflow-x: hidden;
+            position: relative;
+        }
+        header {
+            background-color: #2c2c2c;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        h1, h2 { font-family: 'Montserrat', sans-serif; }
+        h1 { margin: 0; font-size: 2.5em; color: #B2E0AA; }
+        nav {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        nav a {
+            color: #f0f0f0;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+        }
+        nav a:hover { color: #B2E0AA; }
+        main {
+            width: min(800px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: 20px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .content-box {
+            background-color: rgba(44, 44, 44, .8);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
+        }
+        .content-box h2 { margin: 0 0 18px; color: #B2E0AA; }
+        .writing-subheading {
+            margin: -10px 0 18px;
+            color: #b9c2b9;
+            font-size: .9rem;
+        }
+        .writing-subheading a { color: #B2E0AA; }
+        .writing-list { margin: 0; padding: 0; list-style: none; }
+        .writing-entry { padding: 16px 0; border-top: 1px solid rgba(240, 240, 240, .12); }
+        .writing-entry:first-child { border-top: 0; padding-top: 0; }
+        .writing-entry time { color: #B2E0AA; font-size: .85rem; }
+        .writing-entry h3 { margin: 4px 0 0; font-size: 1.1rem; font-weight: 500; }
+        #canvas {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        @media (max-width: 520px) {
+            nav a { margin: 0 7px; font-size: .95em; }
+            h1 { font-size: 2.1em; }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <header><h1>Writings</h1></header>
+    <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="writings.html" aria-current="page">Writings</a>
+    </nav>
+    <main>
+        <section class="content-box" aria-labelledby="writing-list-heading">
+            <h2 id="writing-list-heading">Writing archive</h2>
+            <p class="writing-subheading">Writings are often adaptations or addendums to videos I publish on <a href="https://www.youtube.com/@catstatue">my YouTube</a>.</p>
+            <ol class="writing-list">
+                <!-- To add a writing, copy this entry and fill in the date and title:
+                <li class="writing-entry">
+                    <time datetime="YYYY-MM-DD">Month D, YYYY</time>
+                    <h3>Title</h3>
+                </li>
+                -->
+            </ol>
+        </section>
+    </main>
+    <script src="Assets/particle-background.js"></script>
+    <script src="Assets/site-quotes.js"></script>
+</body>
+</html>
