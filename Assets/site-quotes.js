@@ -1,6 +1,13 @@
 (() => {
     const quotes = [
         { text: "Love today, and seize all tommorrows", attribution: "C.M. Kösemen" },
+        { text: "As above, so below", attribution: "Emerald Tablet, Unknown Author" },
+        { text: "Success breeds complacency. Complacency breeds failure. Only the paranoid survive.", attribution: "Andy Grove" },
+        { text: "Simplicity is the ultimate sophistication.", attribution: "Leonardo da Vinci" },
+        { text: "Anytime you see dichotomies that ignore the human experiment’s infinite nuances, you can be certain you are encountering the Archontic mind.", attribution: "sol luckman" },
+        { text: "The present is theirs; the future, for which I really worked, is mine.", attribution: "Nikola Tesla" },
+        { text: "I didn't have any particular knowledge of what the rest of the world was doing, which was probably an advantage. I just looked at the problem from my own perspective.", attribution: "Jack Kilby" },
+        { text: "Information is the resolution of uncertainty.", attribution: "claude shannon" },
         // Add more entries in this format:
         // { text: "Your quote", attribution: "Attribution" },
     ];
